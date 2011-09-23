@@ -347,6 +347,15 @@ Error ChildProcess::run()
    }
    cmdLine.push_back('\0');
 
+   DWORD flags = 0;
+
+   if (options_.detachProcess)
+   {
+      flags |= DETACHED_PROCESS | CREATE_NEW_PROCESS_GROUP;
+      si.dwFlags |= STARTF_USESHOWWINDOW;
+      si.wShowWindow = SW_HIDE;
+   }
+
    // Start the child process.
    PROCESS_INFORMATION pi;
    ::ZeroMemory( &pi, sizeof(PROCESS_INFORMATION));
@@ -356,7 +365,7 @@ Error ChildProcess::run()
      NULL,            // Process handle not inheritable
      NULL,            // Thread handle not inheritable
      TRUE,            // Set handle inheritance to TRUE
-     0,               // No creation flags
+     flags,           // Creation flags
      NULL,            // Use parent's environment block
      NULL,            // Use parent's starting directory
      &si,             // Pointer to STARTUPINFO structure

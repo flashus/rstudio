@@ -215,5 +215,9 @@ else()
    configure_file(session/postback/rpostback-gitssh session/postback)
    configure_file(session/postback/rpostback-askpass session/postback)
 
+   if(WIN32)
+      add_subdirectory(session/detach)
+   endif()
+
 endif()
 
