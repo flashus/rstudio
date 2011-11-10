@@ -1,0 +1,11 @@
+<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 1.7.0//EN" "http://google-web-toolkit.googlecode.com/svn/tags/1.7.0/distro-source/core/src/gwt-module.dtd">
+<module rename-to='vcs'>
+
+   <!-- RStudio module dependencies                                -->
+   <inherits name='org.rstudio.studio.common.Common' />
+   
+    <!-- Specify the app entry point class.                         -->
+   <entry-point class='org.rstudio.studio.vcs.client.VCS'/>
+
+ 
+</module>
